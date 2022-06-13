@@ -1,4 +1,5 @@
 // imports 
+const {networkConfig} = require("../helper-hardhat-config");
 
 // hre = hardhat runtime environment
 // getNamedAccounts, deployments are functions from hre
@@ -8,6 +9,13 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     const { deploy, log } = deployments;
     const { deployer } = await getNamedAccounts();
     const chainId = network.config.chainId;
+
+    // if chainId is A use address 1
+    // if chainId is B use address 2
+    const ethUsdPriceFeedAddress = networkConfig[chainId]["ethUsdPriceFeed"];
+
+    // if price feed contract doesn't exist, we deploy a minimal version for our local testing
+    // used for hardhat/local network
 
     // what happens when we want to change chains?
     // when going for localhost or hardhat network we want to use a mock
