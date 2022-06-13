@@ -1,5 +1,6 @@
 // imports 
 const {networkConfig} = require("../helper-hardhat-config");
+const {network}  = require("hardhat");
 
 // hre = hardhat runtime environment
 // getNamedAccounts, deployments are functions from hre
